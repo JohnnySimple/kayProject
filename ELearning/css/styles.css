@@ -1,0 +1,7 @@
+.home-banner {
+    height: 700px;
+    width: 100%;
+    position: relative;
+    top: -20px;
+    background: url("../img/home-banner.jpg") no-repeat scroll center center;
+}
