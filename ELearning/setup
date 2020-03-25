@@ -1,8 +1,9 @@
-#Electronic learning web application setup
+# E-learning web application setup
 
 Create a database with the name "elearning" with xampp
 
 Run "queries.php" to create all tables in the database
+
 An admin lecturer will be created after you run "queries.php"
 
 Admin credentials:

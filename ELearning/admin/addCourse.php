@@ -10,7 +10,7 @@
 <script src="../js/jquery1.js"></script>
 
 <?php
-// session_start();
+session_start();
 
 $servername = "localhost";
 $username = "root";
@@ -23,13 +23,20 @@ if($conn->connect_error){
     die("Connection faild" . $conn->connect_error);
 }
 
-$sql_programs = "SELECT * FROM Programs";
+$sql_programs = "SELECT * FROM Programs WHERE id = $_SESSION[program_id]";
 $programs = $conn->query($sql_programs);
 if($programs != TRUE){
     echo "Unable to query from table Programs" . $conn->error;
 }
 
-$course_nameErr = $programErr = $yearErr = $semesterErr = "";
+$sql_lecturers = "SELECT * FROM Lecturers WHERE program_id = $_SESSION[program_id]";
+$lecturers = $conn->query($sql_lecturers);
+if($lecturers != TRUE) {
+    echo "Unable to query Lecturers table!";
+}
+
+
+$course_nameErr = $programErr = $yearErr = $semesterErr = $lecErr = "";
 
 if(isset($_POST["submit"])){
 
@@ -61,8 +68,15 @@ if(isset($_POST["submit"])){
         $semester = testInput($_POST["semester"]);
     }
 
-    $sql = "INSERT INTO Courses(course_name, program_id, year, semester)
-        VALUES('$course_name', '$program', '$year', '$semester')";
+    if(empty($_POST["lecturer"])){
+        $lecErr = "Lecture is required!";
+    }
+    else {
+        $lec = testInput($_POST["lecturer"]);
+    }
+
+    $sql = "INSERT INTO Courses(course_name, program_id, year, semester, lec_id)
+        VALUES('$course_name', '$program', '$year', '$semester', '$lec')";
     $addCourse = $conn->query($sql);
     if($addCourse != TRUE){
         echo "Unable to add course:" . $conn->error;
@@ -109,6 +123,18 @@ function testInput($data){
                                 foreach($programs as $program){
                                     echo "<option value='" .$program['id']. "'>
                                         " . $program['program_name'] . "
+                                    </option>";
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lecturer">Lecturer</label>
+                        <select name="lecturer" id="lecturer" class="form-control">
+                            <?php 
+                                foreach($lecturers as $lecturer){
+                                    echo "<option value='" .$lecturer['id']. "'>
+                                        " . $lecturer['title']. " " . $lecturer['firstname'] ." ". $lecturer['lastname'] . "
                                     </option>";
                                 }
                             ?>

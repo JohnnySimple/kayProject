@@ -27,7 +27,7 @@
 
 
 <?php
-// session_start();
+session_start();
 
 $servername = "localhost";
 $username = "root";
@@ -43,12 +43,18 @@ if($conn->connect_error){
 $isadmin = "";
 
 $titleErr = $firstnameErr = $lastnameErr = $usernameErr = $emailErr =
- $passwordErr = $confirm_passwordErr = $programErr = $courseErr = $adminErr = "";
+ $passwordErr = $confirm_passwordErr = $programErr = $adminErr = "";
 
 $sql_programs = "SELECT * FROM Programs";
 $programs = $conn->query($sql_programs);
 if($programs != TRUE){
     echo "Unable to query from table Programs" . $conn->error;
+}
+
+$sql_courses = "SELECT * FROM Courses";
+$courses = $conn->query($sql_courses);
+if($courses != TRUE){
+    echo "Unable to query from table Courses" . $conn->error;
 }
 
 
@@ -95,12 +101,6 @@ if(isset($_POST["submit"])){
         $email = test_input($_POST["email"]);
     }
 
-    if(empty($_POST["course"])){
-        $courseErr = "Course is required!";
-    }
-    else {
-        $course = test_input($_POST["course"]);
-    }
 
     if(empty($_POST["admin"])){
         $adminErr = "Admin is required!";
@@ -122,8 +122,8 @@ if(isset($_POST["submit"])){
     } else {
         $confirm_pass = test_input($_POST["confirm_password"]);
         
-        $sql = "INSERT INTO Lecturers (title, firstname, lastname, username, email, password, program_id, course, admin)
-        VALUES('$title', '$firstname', '$lastname', '$username', '$email', '$password', '$program', '$course', '$isadmin')";
+        $sql = "INSERT INTO Lecturers (title, firstname, lastname, username, email, password, program_id, admin)
+        VALUES('$title', '$firstname', '$lastname', '$username', '$email', '$password', '$program', '$isadmin')";
 
         if($conn->query($sql)) {
             echo "<div class='alert alert-success pull-right' style='width:30%' align='center'>
@@ -133,6 +133,8 @@ if(isset($_POST["submit"])){
             echo "Unable to create account:" . $conn->error;
         }
     }
+
+    
 }
 
 function test_input($data) {
@@ -204,16 +206,7 @@ function test_input($data) {
                             ?>
                         </select>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="course">Course</label>
-                        <select name="course" id="course" class="form-control">
-                            <option value="Circuit Theory">Circuit Theory</option>
-                            <option value="Introduction to c++">Introduction to c++</option>
-                            <option value="Assembly language">Assembly language</option>
-                            <option value="Information systems">Information systems</option>
-                            
-                        </select>
-                    </div>
+                    
                     <div class="form-group col-md-6">
                         <label for="admin">Admin</label>
                         <select name="admin" id="admin" class="form-control">

@@ -13,7 +13,7 @@
 <script src="../js/jquery1.js"></script>
 
 <?php
-session_start();
+// session_start();
 ?>
 
 <body>

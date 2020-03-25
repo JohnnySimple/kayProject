@@ -6,8 +6,8 @@
 
 <Link rel="stylesheet" href="../css/bootstrap.min.css"></Link>
 <Link rel="stylesheet" href="../css/dashboard.css"></Link>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery1.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery1.js"></script>
 
 <?php
 session_start();
@@ -23,12 +23,12 @@ if($conn->connect_error){
     die("Connection faild" . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM Lecturers WHERE admin=0 AND program_id = $_SESSION[program_id]";
-$lecturers = $conn->query($sql);
-
-if($lecturers != TRUE){
-    echo "Unable to query Lecturers!";
+$sql = "SELECT * FROM Course_materials WHERE lec_id=$_SESSION[id]";
+$course_materials = $conn->query($sql);
+if($course_materials != TRUE){
+    echo "Unable to query from table Course_materials" . $conn->error;
 }
+
 
 
 ?>
@@ -45,64 +45,43 @@ if($lecturers != TRUE){
         <?php require "adminSidebar.php" ?>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Remove Lecturer</h1>
-            <div class="table-responsive">
+          <h1 class="page-header">Remove Course Material</h1>
+            <div>
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Courses</th>
-                            <th>Action</th>
-                        </tr>
+                        <th>Course</th>
+                        <th>Material Name</th>
+                        <th>Action</th>
                     </thead>
                     <tbody>
                         <?php
-
                             if(isset($_POST["remove"])){
-                                $lecturer_id = $_POST['lecturer_id'];
-                                $sql1 = "DELETE FROM Lecturers WHERE id='$lecturer_id'";
-                                $delete_lecturer = $conn->query($sql1);
-                                if($delete_lecturer != TRUE){
-                                    echo "Unable to delete lecturer!";
+                                $material_id = $_POST['material_id'];
+                                $sql1 = "DELETE FROM Course_materials WHERE id='$material_id'";
+                                $delete_material = $conn->query($sql1);
+                                if($delete_material != TRUE){
+                                    echo "Unable to delete material!";
                                 }
-
-                                
                             }
 
-                            foreach($lecturers as $lecturer){
-                                $sql2 = "SELECT * FROM Courses WHERE lec_id=$lecturer[id]";
-                                $courses = $conn->query($sql2);
-                                if($courses != TRUE) {
-                                    echo "Unable to query courses!";
+
+                            foreach($course_materials as $material){
+                                $sql_course = "SELECT * FROM Courses WHERE id=$material[course_id]";
+                                $course = $conn->query($sql_course);
+                                $course = mysqli_fetch_assoc($course);
+                                if($course != TRUE){
+                                    echo "Unable to query for course!";
                                 }
-                                // foreach($courses as $course){
-                                //     echo $course['course_name'];
-                                // }
                                 echo "
                                     <tr>
-                                        <td>$lecturer[title]</td>
-                                        <td>$lecturer[firstname]</td>
-                                        <td>$lecturer[lastname]</td>
-                                        <td>$lecturer[email]</td>
-                                        <td>
-                                            <ul>
-                                                ";
-                                                
-                                        foreach($courses as $course){
-                                            echo "<li>$course[course_name]</li>";
-                                        }
-                                echo "
-                                            </ul>
-                                        </td>
+                                        <td>$course[course_name]</td>
+                                        <td>$material[material_name]</td>
                                         <td>
                                             <form method='post'>
                                                 <button type='submit' name='remove' class='btn btn-danger'>
                                                     <span class='glyphicon glyphicon-trash'></span>
                                                 </button>
-                                                <input type='hidden' name='lecturer_id' value='$lecturer[id]'/>
+                                                <input type='hidden' name='material_id' value='$material[id]'/>
                                             </form>
                                         </td>
                                     </tr>
@@ -112,10 +91,10 @@ if($lecturers != TRUE){
                     </tbody>
                 </table>
             </div>
-          </div>
         </div>
       </div>
     </div>
+
 
     <script>
         if(window.history.replaceState) {

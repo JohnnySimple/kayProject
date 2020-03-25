@@ -59,6 +59,9 @@ if(isset($_POST["submit"])){
         $_SESSION["firstname"] = $isstudent_res['firstname'];
         $_SESSION["lastname"] = $isstudent_res['lastname'];
         $_SESSION["username"] = $username;
+        $_SESSION['program_id'] = $isstudent_res['program_id'];
+        $_SESSION['course'] = $isstudent_res['course'];
+        $_SESSION['year'] = $isstudent_res['year'];
         header("location: student/studentHomepage.php");
     }
     elseif($lec_count){
@@ -72,6 +75,8 @@ if(isset($_POST["submit"])){
             $_SESSION["title"] = $isadmin_res['title'];
             $_SESSION["firstname"] = $isadmin_res['firstname'];
             $_SESSION["lastname"] = $isadmin_res['lastname'];
+            $_SESSION["program_id"] = $isadmin_res['program_id'];
+            $_SESSION["course"] = $isadmin_res['course'];
             header("location: admin/adminHomepage.php");
         }
         else{
@@ -81,6 +86,8 @@ if(isset($_POST["submit"])){
             $_SESSION["title"] = $isadmin_res['title'];
             $_SESSION["firstname"] = $isadmin_res['firstname'];
             $_SESSION["lastname"] = $isadmin_res['lastname'];
+            $_SESSION["program_id"] = $isadmin_res['program_id'];
+            $_SESSION["course"] = $isadmin_res['course'];
             header("location: lecturer/lecturerHomepage.php");
         }
     }
@@ -108,7 +115,7 @@ if(isset($_POST["submit"])){
                         placeholder="Username">
                     </div>
                     <div class="form-group">
-                        <label for="password">Username</label>
+                        <label for="password">Password</label>
                         <input type="password" name="password" id="password" class="form-control" required
                         placeholder="Password">
                     </div>

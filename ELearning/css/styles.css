@@ -3,5 +3,8 @@
     width: 100%;
     position: relative;
     top: -20px;
-    background: url("../img/home-banner.jpg") no-repeat scroll center center;
+    background-image: url("../img/home-banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }

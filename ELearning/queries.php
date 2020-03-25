@@ -64,12 +64,14 @@ $sql6 = "CREATE TABLE Courses(
     program_id INT(10) UNSIGNED NOT NULL,
     year INT(10) UNSIGNED NOT NULL,
     semester INT(10) UNSIGNED NOT NULL,
-    FOREIGN KEY(program_id) REFERENCES Programs(id)
+    lec_id INT(10) UNSIGNED NOT NULL,
+    FOREIGN KEY(program_id) REFERENCES Programs(id),
+    FOREIGN KEY(lec_id) REFERENCES Lecturers(id)
 )";
 
 $sql7 = "CREATE TABLE Course_materials(
     id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    material_name VARCHAR(60) NOT NULL,
+    material_name VARCHAR(200) NOT NULL,
     year INT(10) UNSIGNED NOT NULL,
     lec_id INT(10) UNSIGNED NOT NULL,
     course_id INT(10) UNSIGNED NOT NULL,

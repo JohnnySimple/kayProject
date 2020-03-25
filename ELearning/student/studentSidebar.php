@@ -14,12 +14,9 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="adminHomepage.php">Dashboard <span class="sr-only">(current)</span></a></li>
-            <li><a href="addLecturer.php">Add Lecturer</a></li>
-            <li><a href="removeLecturer.php">Remove Lecturer</a></li>
-            <li><a href="addCourse.php">Add Course</a></li>
-            <li><a href="addMaterial.php">Add Material</a></li>
-            <li><a href="removeMaterial.php">Remove Material</a></li>
+            <li><a href="">Manage account</a></li>
             <li><a href="../logout.php">Logout</a></li>
+
           </ul>
         </div>
 

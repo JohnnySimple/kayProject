@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lecturer Home</title>
+    <title>Student Home</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,10 +11,6 @@
 <Link rel="stylesheet" href="../css/dashboard.css"></Link>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery1.js"></script>
-
-<?php
-// session_start();
-?>
 
 <body>
 
@@ -31,7 +27,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><?php echo $_SESSION["title"] ." ". $_SESSION["firstname"] ." ". $_SESSION["lastname"]; ?></a></li>
+            <li><a href="#"><?php echo $_SESSION["firstname"] ." ". $_SESSION["lastname"]; ?></a></li>
             <li><a href="../logout.php">Logout</a></li>
           </ul>
           <form class="navbar-form navbar-right">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Home</title>
+    <title>Lecturer Home</title>
 </head>
 
 <Link rel="stylesheet" href="../css/bootstrap.min.css"></Link>
@@ -23,7 +23,7 @@ if($conn->connect_error){
     die("Connection faild" . $conn->connect_error);
 }
 
-$sql_courses = "SELECT * FROM Courses";
+$sql_courses = "SELECT * FROM Courses WHERE lec_id = $_SESSION[id]";
 $courses = $conn->query($sql_courses);
 if($courses != TRUE){
     echo "Unable to query from table Courses" . $conn->error;
@@ -133,11 +133,11 @@ if(isset($_POST["submit"])) {
 
     
 
-    <?php require "adminLayout.php" ?>
+    <?php require "lecturerLayout.php" ?>
 
     <div class="container-fluid">
       <div class="row">
-        <?php require "adminSidebar.php" ?>
+        <?php require "lecturerSidebar.php" ?>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Add Course Material</h1>
