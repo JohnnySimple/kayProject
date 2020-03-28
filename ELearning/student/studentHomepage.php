@@ -39,11 +39,14 @@ if(isset($_POST['read_material'])){
     $FileType = pathinfo($filePath, PATHINFO_EXTENSION);
     
 
-    header('Content-type:application/pdf');
-    header('Content-Disposition: inline; filename="' .$filename. '"');
-    header('Content-Transfer-Encoding:binary');
-    header('Accept-Ranges:bytes');
-    @readfile($filePath);
+    // header('Content-type:application/pdf');
+    // header('Content-Disposition: inline; filename="' .$filename. '"');
+    // header('Content-Transfer-Encoding:binary');
+    // header('Accept-Ranges:bytes');
+    // @readfile($filePath);
+
+    
+
 }
 
 ?>
@@ -157,9 +160,12 @@ if(isset($_POST['read_material'])){
                                                         <span class='glyphicon glyphicon-download-alt'></span>
                                                     </button>
                                                 </a>
-                                                <button class='btn btn-primary'>
+                                                <form method='post'>
+                                                <button class='btn btn-primary' name='read_material'>
                                                     <span>view</span>
                                                 </button>
+                                                <input type='hidden' name='material' value='$slide[material_name]' />
+                                                </form>
                                             </td>
                                         </tr>
                                         ";

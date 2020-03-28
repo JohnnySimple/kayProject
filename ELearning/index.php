@@ -18,8 +18,12 @@
 
 <div class="container-fluid home-banner">
     <div class="row">
-        <div class="pull-right" style="margin-top:200px;margin-right:130px;">
-            <h3 style="color:#fff;font-size:50px;">SCISA <br> E-LEARNING </h3>
+        <div class="" align="center" style="margin-top:200px;margin-right:130px;">
+            <h3 style="color:#fff;font-size:70px;">SCISA E-LEARNING <br> PLATFORM </h3>
+            <div>
+                <a href="register.php"><button class="btn btn-success">Register</button></a>
+                <a href="login.php"><button class="btn btn-success">Login</button></a>
+            </div>
         </div>
     </div>
 </div>    

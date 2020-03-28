@@ -9,3 +9,6 @@ An admin lecturer will be created after you run "queries.php"
 Admin credentials:
 username:kay
 password:kay
+
+The admin is responsible for creating admins for other departments and then
+creating lecturers under his program

@@ -13,8 +13,8 @@
 
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="adminHomepage.php">Dashboard <span class="sr-only">(current)</span></a></li>
-            <li><a href="">Manage account</a></li>
+            <li class="active"><a href="studentHomepage.php">Dashboard <span class="sr-only">(current)</span></a></li>
+            <li><a href="studentAccount.php">Manage account</a></li>
             <li><a href="../logout.php">Logout</a></li>
 
           </ul>
