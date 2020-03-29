@@ -18,13 +18,17 @@
 
 <div class="container-fluid home-banner">
     <div class="row">
-        <div class="" align="center" style="margin-top:200px;margin-right:130px;">
+        <div class="wow fadeInUp" align="center" style="margin-top:200px;margin-right:130px;">
             <h3 style="color:#fff;font-size:70px;">SCISA E-LEARNING <br> PLATFORM </h3>
             <div>
-                <a href="register.php"><button class="btn btn-success">Register</button></a>
-                <a href="login.php"><button class="btn btn-success">Login</button></a>
+                <a href="register.php"><button class="btn btn-success wow fadeInRight">Register</button></a>
+                <a href="login.php"><button class="btn btn-success wow fadeInLeft">Login</button></a>
             </div>
         </div>
     </div>
-</div>    
+</div>
+<script src="js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
 </body>

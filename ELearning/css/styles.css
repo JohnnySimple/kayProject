@@ -3,7 +3,9 @@
     width: 100%;
     position: relative;
     top: -20px;
-    background-image: url("../img/home-banner.jpg");
+    /* background-image: url("../img/library1.jpeg"); */
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url("../img/home-banner.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

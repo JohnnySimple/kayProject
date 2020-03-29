@@ -99,15 +99,21 @@ if(isset($_POST["submit"])){
 }
 
 ?>
-
+<style>
+    .form {
+        color: #fff;
+        margin-top: 150px;
+    }
+</style>
 <body>
 <?php require "homeNavbar.php" ?>
 
-<div class="container">
+<div class="container home-banner">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-4"></div>
+        <div class="col-md-3">
             <div class="form">
-                <h2>Login</h2>
+                <h2 align="center">Login</h2>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -119,12 +125,13 @@ if(isset($_POST["submit"])){
                         <input type="password" name="password" id="password" class="form-control" required
                         placeholder="Password">
                     </div>
-                    <div class="form-group">
-                        <input type="submit" name="submit" class="btn btn-primary" value="Submit">
+                    <div class="form-group" align="center">
+                        <input type="submit" name="submit" class="btn btn-success" value="Submit">
                     </div>
                 </form>
             </div>
         </div>
+        <div class="col-md-5"></div>
     </div>
 </div>
 <script>
